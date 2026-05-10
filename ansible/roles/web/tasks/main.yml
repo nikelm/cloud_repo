@@ -1,0 +1,10 @@
+---
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Create custom index.html with Magic Variables
+  ansible.builtin.copy:
+    content: "Hello from {{ ansible_hostname }}! My groups: {{ group_names | join(', ') }}"
+    dest: /var/www/html/index.html
