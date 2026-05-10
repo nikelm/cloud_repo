@@ -1,0 +1,8 @@
+server {
+    listen 3000;
+
+    location / {
+        # Перенаправляем на внутренний IP первой машины из группы web
+        proxy_pass http://{{ hostvars['srv1']['internal_ip'] }}:80;
+    }
+}
