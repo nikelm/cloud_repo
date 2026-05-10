@@ -1,0 +1,19 @@
+---
+# Изменение имени машины (используем имя из inventory)
+- name: Set hostname to {{ inventory_hostname }}
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"
+
+# Установка стандартных пакетов
+- name: Install standard packages (net-tools, dnsutils, wget, curl, mc, rsync)
+  ansible.builtin.apt:
+    name:
+      - net-tools
+      - dnsutils
+      - wget
+      - curl
+      - mc
+      - rsync
+    state: present
+    update_cache: yes  # Аналог apt update перед установкой
+
