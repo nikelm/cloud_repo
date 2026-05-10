@@ -40,7 +40,6 @@ resource "yandex_compute_instance" "virtual_machine" {
     nat       = true # Оставляем true, чтобы Ansible мог достучаться через интернет
   }
 
-  # ВАЖНО: Добавьте этот блок, чтобы пробросить ваш SSH-ключ
   metadata = {
     ssh-keys = "ubuser:${file("~/.ssh/id_ecdsa.pub")}"
   }
