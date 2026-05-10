@@ -1,0 +1,11 @@
+---
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Configure Nginx to proxy on port 3000
+  ansible.builtin.template:
+    src: proxy.conf.j2
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart Nginx
